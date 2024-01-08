@@ -1,0 +1,118 @@
+.baddd{
+    margin-top: 70px;
+}
+.img-nav{
+    width: 150px;
+    height: 30px;
+}
+.card-img-top{
+    height: 600px;
+}
+.underline {
+    position: absolute;
+    bottom: -5px; /* Adjust the padding as needed */
+    left: 50%;
+    width: 50%; /* Adjust the width as needed */
+    height: 4px; /* Adjust the thickness as needed */
+    background-color: #b81818;
+    transform: translateX(-50%);
+}
+.img-thumbnail{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.social-icons {
+    display: flex;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    justify-content: space-between; /* Adjust the space between icons */
+}
+
+.social-icon-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #b81818; /* Red border color */
+    text-decoration: none; /* Remove underline */
+    transition: border-color 0.3s ease;
+}
+
+.social-icon-link:hover {
+    border-color: #ff0000; /* Darker red for hover effect */
+}
+
+.social-icon-link i {
+    color: #b81818; /* Red icon color */
+    font-size: 24px;
+}
+
+#portfolio-img1{
+    height:200px;
+    width: 400px;
+    border-radius: 10px;
+}
+
+#portfolio-img2{
+    height:200px;
+    width: 400px;
+    border-radius: 10px;
+}
+
+#portfolio-img3{
+    height:200px;
+    width: 400px;
+    border-radius: 10px;
+}
+
+.tree {
+    padding: 20px;
+}
+
+.node {
+    position: relative;
+    display: inline-block;
+    margin: 0 15px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.node:hover {
+    transform: scale(1.1);
+}
+
+.node::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    border-left: 2px solid #b81818;
+    height: 100%;
+}
+
+.node-content {
+    background-color: #b81818;
+    color: #fff;
+    padding: 10px;
+    border: 1px solid #b81818;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: inline-block;
+    text-align: center;
+}
+
+.icon {
+    margin-right: 5px;
+}
+
+/* Custom Tooltip Style */
+.tooltip-inner {
+    background-color: #b81818;
+}
+
+/* Custom Tooltip Arrow */
+.tooltip.bs-tooltip-bottom .arrow::before, .tooltip.bs-tooltip-top .arrow::before {
+    border-top-color: #b81818;
+}
