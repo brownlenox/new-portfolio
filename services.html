@@ -3,111 +3,707 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lenox Portfolio | Services</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Lenox Brown | Services - ERP, Web & Mobile Development</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <script src="https://kit.fontawesome.com/3bc8c0c6b4.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/x-icon" href="img/nav.png">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Services Page Specific Styles */
+        .services-hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 100%),
+                url('img/services-bg.jpg') center/cover no-repeat;
+            padding-top: 100px;
+            margin-bottom: 4rem;
+        }
+    
+        .service-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.4s ease;
+            height: 100%;
+            position: relative;
+        }
+    
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+    
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+        }
+    
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+    
+        .service-features {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+    
+        .service-features li {
+            padding: 0.5rem 0;
+            color: var(--text-primary);
+            opacity: 0.9;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+    
+        .service-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+    
+        .pricing-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+    
+        .service-category {
+            display: inline-block;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+    
+        /* Process Section */
+        .process-step {
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+    
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+    
+        .process-step:not(:last-child):after {
+            content: '';
+            position: absolute;
+            top: 25px;
+            right: -25%;
+            width: 50%;
+            height: 2px;
+            background: var(--border);
+            z-index: 1;
+        }
+    
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 16px;
+            padding: 4rem;
+            color: white;
+            margin: 4rem 0;
+        }
+    
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+    
+        /* Package Comparison */
+        .package-table {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+    
+        .package-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+    
+        .package-feature {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    
+        .package-feature:last-child {
+            border-bottom: none;
+        }
+    
+        /* Technology Stack */
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+    
+        .tech-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            text-align: center;
+            min-width: 120px;
+            transition: all 0.3s ease;
+        }
+    
+        .tech-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+    
+        .tech-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+    
+        /* Responsive */
+        @media (max-width: 768px) {
+            .process-step:not(:last-child):after {
+                display: none;
+            }
+    
+            .cta-section {
+                padding: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <nav class="container navbar navbar-expand-lg bg-body-tertiary fixed-top rounded">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="img/lenox-logo.png" alt="Logo" class="img-nav">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/lenox-logo.png" alt="Lenox Brown Logo" style="height: 35px;">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="\index.html"><i class="fas fa-home mx-2"></i>Home</a>
+                        <a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="\about.html"><i class="fas fa-user-secret mx-2"></i>About Me</a>
+                        <a class="nav-link" href="about.html"><i class="fas fa-user"></i> About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="\portfolio.html"><i class="far fa-address-book mx-2"></i>Portfolio</a>
+                        <a class="nav-link" href="portfolio.html"><i class="fas fa-code"></i> Portfolio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="\services.html"><i class="fas fa-tools mx-2"></i>Services</a>
+                        <a class="nav-link active" href="services.html"><i class="fas fa-tools"></i> Services</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="\contact.html"><i class="fas fa-phone mx-2"></i>Contact</a>
+                        <a class="nav-link" href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
                     </li>
                 </ul>
+                <button class="btn theme-toggle ms-3" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
             </div>
         </div>
     </nav>
-    
-    <div class="container rounded bg-body-tertiary baddd mb-2">
-        <div class="pt-3 text-center">
-            <h2 class="fw-bold" style="position: relative; display: inline-block;">
-                Services
-                <span class="underline"></span>
-            </h2>
-        </div>
-        <div class="row text-center">
-            <div class="col-lg-4 mt-3 bg-body-tertiary shadow rounded p-3">
-                <img src="img/api.png" class="img-fluid rounded-circle mb-3 bg-light" alt="API Integration" loading="lazy">
-                <h5 class="fw-bold">API Integration</h5>
-                <p>Seamless integration with third-party APIs to enhance functionality and data exchange.</p>
-            </div>
-            <div class="col-lg-4 mt-3 bg-body-tertiary shadow rounded p-3">
-                <img src="img/database.png" class="img-fluid rounded-circle mb-3 bg-light" alt="Database Management" loading="lazy">
-                <h5 class="fw-bold">Database Management</h5>
-                <p>Efficient design and management of databases, ensuring data integrity and performance.</p>
-            </div>
-            <div class="col-lg-4 mt-3 bg-body-tertiary shadow rounded p-3">
-                <img src="img/e-commerce.png" class="img-fluid rounded-circle mb-3 bg-light" alt="E-Commerce Solutions" loading="lazy">
-                <h5 class="fw-bold">E-Commerce Solutions</h5>
-                <p>Crafting user-friendly and secure e-commerce platforms tailored to your business needs.</p>
-            </div>
-            <div class="col-lg-4 mt-3 bg-body-tertiary shadow rounded p-3">
-                <img src="img/mobile_dev.png" class="img-fluid rounded-circle mb-3 bg-light" alt="Mobile App Development" loading="lazy">
-                <h5 class="fw-bold">Mobile App Development</h5>
-                <p>Creating responsive and engaging mobile applications for a seamless user experience.</p>
-            </div>
-            <div class="col-lg-4 mt-3 bg-body-tertiary shadow rounded p-3">
-                <img src="img/web_host.png" class="img-fluid rounded-circle mb-3 bg-light" alt="Web Hosting Solutions" loading="lazy">
-                <h5 class="fw-bold">Web Hosting Solutions</h5>
-                <p>Configuring reliable and scalable web hosting solutions for optimal website performance.</p>
-            </div>
-            <div class="col-lg-4 mt-3 bg-body-tertiary shadow rounded p-3">
-                <img src="img/web_dev.png" class="img-fluid rounded-circle mb-3 bg-light" alt="Web Development" loading="lazy">
-                <h5 class="fw-bold">Web Development</h5>
-                <p>Building modern and responsive websites with a focus on user experience and functionality.</p>
+<!-- Services Hero -->
+<section class="services-hero">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h1 class="display-4 fw-bold mb-3 text-white">Expert Software Services</h1>
+                <p class="lead mb-4  text-white">Comprehensive software solutions from ERP implementations to custom web
+                    and mobile
+                    applications. Specializing in Microsoft Dynamics 365 Business Central, AI integration, and
+                    full-stack development.</p>
+                <div class="d-flex gap-3">
+                    <a href="#services" class="btn btn-primary px-4 py-2">
+                        <i class="fas fa-list me-2"></i> Explore Services
+                    </a>
+                    <a href="contact.html" class="btn btn-outline-light px-4 py-2">
+                        <i class="fas fa-paper-plane me-2"></i> Get Quote
+                    </a>
+                </div>
             </div>
         </div>
     </div>
+</section>
+
+<!-- Main Services -->
+<div class="container" id="services">
+    <div class="section-header mb-5">
+        <h2>Core Services</h2>
+        <span class="underline"></span>
+        <p class="text-muted mt-3">Specialized solutions for your business needs</p>
+        </div>
+        
+        <div class="row g-4">
+            <!-- Service 1: ERP Development -->
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+                    <span class="pricing-badge">Most Popular</span>
+                    <div class="p-4">
+                        <div class="service-icon">
+                            <i class="fab fa-microsoft"></i>
+                        </div>
+                        <span class="service-category">Enterprise Solutions</span>
+                        <h4 class="fw-bold mb-3">Microsoft Dynamics 365 Business Central</h4>
+                        <p>Complete ERP solutions including customization, module development, data migration, and system
+                            integration.</p>
+        
+                        <ul class="service-features">
+                            <li>AL Language Development</li>
+                            <li>Business Process Automation</li>
+                            <li>Financial Module Customization</li>
+                            <li>Power Apps Integration</li>
+                            <li>Reporting & Analytics</li>
+                            <li>Training & Support</li>
+                        </ul>
+        
+                        <div class="text-center mt-4">
+                            <a href="contact.html?service=erp" class="btn btn-primary w-100">
+                                <i class="fas fa-calendar me-2"></i> Schedule Consultation
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Service 2: Web Development -->
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+                    <div class="p-4">
+                        <div class="service-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <span class="service-category">Web Development</span>
+                        <h4 class="fw-bold mb-3">Full-Stack Web Applications</h4>
+                        <p>Modern, responsive web applications built with Django, React, and other cutting-edge
+                            technologies.</p>
+        
+                        <ul class="service-features">
+                            <li>Custom Web Applications</li>
+                            <li>E-commerce Platforms</li>
+                            <li>API Development & Integration</li>
+                            <li>Database Design & Management</li>
+                            <li>Responsive Design</li>
+                            <li>Performance Optimization</li>
+                        </ul>
+        
+                        <div class="text-center mt-4">
+                            <a href="contact.html?service=web" class="btn btn-primary w-100">
+                                <i class="fas fa-calendar me-2"></i> Discuss Project
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Service 3: Mobile Development -->
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+                    <div class="p-4">
+                        <div class="service-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <span class="service-category">Mobile Solutions</span>
+                        <h4 class="fw-bold mb-3">Mobile App Development</h4>
+                        <p>Native and cross-platform mobile applications for iOS and Android with seamless user experiences.
+                        </p>
+        
+                        <ul class="service-features">
+                            <li>Android App Development (Kotlin/Java)</li>
+                            <li>Cross-platform Solutions</li>
+                            <li>UI/UX Design</li>
+                            <li>App Store Deployment</li>
+                            <li>Push Notifications</li>
+                            <li>Maintenance & Updates</li>
+                        </ul>
+        
+                        <div class="text-center mt-4">
+                            <a href="contact.html?service=mobile" class="btn btn-primary w-100">
+                                <i class="fas fa-calendar me-2"></i> Start Project
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- Service 4: AI & Data Solutions -->
+        <div class="col-lg-4 col-md-6">
+            <div class="service-card">
+                <div class="p-4">
+                    <div class="service-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                        <span class="service-category">AI & Analytics</span>
+                        <h4 class="fw-bold mb-3">AI Integration & Data Analytics</h4>
+                        <p>Intelligent solutions using machine learning, predictive analytics, and business intelligence
+                            tools.</p>
+                        
+                        <ul class="service-features">
+                            <li>Machine Learning Models</li>
+                            <li>Predictive Analytics</li>
+                            <li>Data Visualization</li>
+                            <li>Business Intelligence</li>
+                            <li>Azure AI Integration</li>
+                            <li>Custom Algorithms</li>
+                        </ul>
+                        
+                        <div class="text-center mt-4">
+                            <a href="contact.html?service=ai" class="btn btn-primary w-100">
+                                <i class="fas fa-calendar me-2"></i> Explore AI Solutions
+                            </a>
+                        </div>
+                    </div>
+                            </div>
+                            </div>
+                        <!-- Service 5: Database Solutions -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="service-card">
+                                <div class="p-4">
+                                    <div class="service-icon">
+                                        <i class="fas fa-database"></i>
+                                    </div>
+                                    <span class="service-category">Data Management</span>
+                                    <h4 class="fw-bold mb-3">Database Design & Management</h4>
+                                    <p>Robust database solutions for performance, scalability, and data integrity across platforms.</p>
+                                    
+                                    <ul class="service-features">
+                                        <li>Database Design & Architecture</li>
+                                        <li>SQL/NoSQL Implementation</li>
+                                        <li>Performance Optimization</li>
+                                        <li>Data Migration</li>
+                                        <li>Backup & Recovery</li>
+                                        <li>Security Implementation</li>
+                                    </ul>
+                                    
+                                    <div class="text-center mt-4">
+                                        <a href="contact.html?service=database" class="btn btn-primary w-100">
+                                            <i class="fas fa-calendar me-2"></i> Optimize Your Data
+                                        </a>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    <!-- Service 6: Cloud & DevOps -->
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="service-card">
+                                            <div class="p-4">
+                                                <div class="service-icon">
+                                                    <i class="fas fa-cloud"></i>
+                                                </div>
+                                                <span class="service-category">Infrastructure</span>
+                                                <h4 class="fw-bold mb-3">Cloud & DevOps Solutions</h4>
+                                                <p>Infrastructure setup, deployment automation, and cloud solutions for reliable application
+                                                    hosting.</p>
+                                    
+                                    <ul class="service-features">
+                                        <li>Cloud Deployment (AWS/Azure)</li>
+                                        <li>CI/CD Pipeline Setup</li>
+                                        <li>Docker Containerization</li>
+                                        <li>Server Configuration</li>
+                                        <li>Monitoring & Logging</li>
+                                        <li>Security & Compliance</li>
+                                    </ul>
+                        
+                                    <div class="text-center mt-4">
+                                        <a href="contact.html?service=devops" class="btn btn-primary w-100">
+                                            <i class="fas fa-calendar me-2"></i> Setup Infrastructure
+                                        </a>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                        
+                        <!-- Development Process -->
+                        <div class="row mt-5 pt-5">
+                            <div class="col-12">
+                                <div class="section-header mb-5">
+                                    <h2>Development Process</h2>
+                                    <span class="underline"></span>
+                                    <p class="text-muted mt-3">Structured approach for successful project delivery</p>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-6">
+                                        <div class="process-step">
+                                            <div class="step-number">1</div>
+                                            <h5>Discovery & Planning</h5>
+                                            <p class="text-muted">Requirements gathering, analysis, and project planning</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6">
+                                        <div class="process-step">
+                                            <div class="step-number">2</div>
+                                            <h5>Design & Prototyping</h5>
+                                            <p class="text-muted">UI/UX design, architecture planning, and prototyping</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6">
+                                        <div class="process-step">
+                                            <div class="step-number">3</div>
+                                            <h5>Development</h5>
+                                            <p class="text-muted">Agile development with regular progress updates</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6">
+                                        <div class="process-step">
+                                            <div class="step-number">4</div>
+                                            <h5>Testing & Deployment</h5>
+                                            <p class="text-muted">Quality assurance, testing, and production deployment</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Technology Stack -->
+                        <div class="row mt-5 pt-5">
+                            <div class="col-12">
+                                <div class="section-header mb-5">
+                                    <h2>Technology Stack</h2>
+                                    <span class="underline"></span>
+                                    <p class="text-muted mt-3">Modern technologies for robust solutions</p>
+                                </div>
+                    
+                            <div class="tech-stack">
+                                <div class="tech-item">
+                                    <div class="tech-icon">
+                                        <i class="fab fa-python"></i>
+                                    </div>
+                                    <div>Python/Django</div>
+                                </div>
+                                <div class="tech-item">
+                                    <div class="tech-icon">
+                                        <i class="fab fa-js"></i>
+                                    </div>
+                                    <div>JavaScript/React</div>
+                                </div>
+                                <div class="tech-item">
+                                    <div class="tech-icon">
+                                        <i class="fab fa-microsoft"></i>
+                                    </div>
+                                    <div>Business Central</div>
+                                </div>
+                                <div class="tech-item">
+                                    <div class="tech-icon">
+                                        <i class="fas fa-database"></i>
+                                    </div>
+                                    <div>PostgreSQL</div>
+                                </div>
+                                <div class="tech-item">
+                                    <div class="tech-icon">
+                                        <i class="fab fa-android"></i>
+                                    </div>
+                                    <div>Kotlin/Android</div>
+                                </div>
+                                <div class="tech-item">
+                                    <div class="tech-icon">
+                                        <i class="fab fa-aws"></i>
+                                    </div>
+                                    <div>AWS/Azure</div>
+                                </div>
+                                <div class="tech-item">
+                                    <div class="tech-icon">
+                                        <i class="fas fa-brain"></i>
+                                    </div>
+                                    <div>AI/ML</div>
+                                </div>
+                                <div class="tech-item">
+                                    <div class="tech-icon">
+                                        <i class="fab fa-docker"></i>
+                                    </div>
+                                    <div>Docker</div>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                            <!-- CTA Section -->
+                            <div class="cta-section fade-in">
+                                <div class="cta-content">
+                                    <h2 class="mb-4">Ready to Start Your Project?</h2>
+                                    <p class="mb-4">Let's discuss your requirements and create a customized solution that fits your business needs
+                                        and budget.</p>
+                                    <div class="d-flex gap-3 justify-content-center flex-wrap">
+                                        <a href="contact.html" class="btn btn-light btn-lg px-4">
+                                            <i class="fas fa-paper-plane me-2"></i> Get Free Consultation
+                                        </a>
+                                        <a href="portfolio.html" class="btn btn-outline-light btn-lg px-4">
+                                            <i class="fas fa-code me-2"></i> View My Work
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <img src="img/lenox-logo.png" alt="Logo" class="mb-3" style="height: 35px;">
+                    <p class="text-light mb-4">Innovative software solutions for modern business challenges.</p>
+                    <div class="social-icons">
+                        <a href="https://github.com/brownlenox" class="social-icon-link" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/lenox-brown-4a6999356?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                            class="social-icon-link" target="_blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://twitter.com/brownlenox24" class="social-icon-link" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-6 mb-4">
+                    <h5 class="mb-4">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html" class="text-light text-decoration-none">Home</a></li>
+                        <li class="mb-2"><a href="about.html" class="text-light text-decoration-none">About</a></li>
+                        <li class="mb-2"><a href="portfolio.html" class="text-light text-decoration-none">Portfolio</a></li>
+                        <li class="mb-2"><a href="services.html" class="text-light text-decoration-none">Services</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-6 mb-4">
+                    <h5 class="mb-4">Services</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="services.html" class="text-light text-decoration-none">ERP Development</a>
+                        </li>
+                        <li class="mb-2"><a href="services.html" class="text-light text-decoration-none">Web
+                                Applications</a></li>
+                        <li class="mb-2"><a href="services.html" class="text-light text-decoration-none">Mobile Apps</a>
+                        </li>
+                        <li class="mb-2"><a href="services.html" class="text-light text-decoration-none">AI Integration</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5 class="mb-4">Contact Info</h5>
+                    <ul class="list-unstyled text-light">
+                        <li class="mb-2"><i class="fas fa-envelope me-2"></i> brownlenox24@gmail.com</li>
+                        <li class="mb-2"><i class="fas fa-phone me-2"></i> +254 745 383 292</li>
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Nairobi, Kenya</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="border-secondary my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">© <span id="currentYear"></span> Lenox Brown. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">
+                        <i class="fas fa-coffee me-1"></i>
+                        "A cup of coffee keeps a million bugs away"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
     
-      
-      
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
 
-      <div class="container bg-body-tertiary rounded mt-2 mb-2">
-        <div class="card mt-2  mb-2">
-            <div class="card-header">
-              Lenox' says
-            </div>
-            <div class="card-body">
-              <blockquote class="blockquote mb-0">
-                <p>A cup of coffee, keeps a million bugs away</p>
-                <footer class="blockquote-footer" id="copyrightFooter">Copyright © <span id="currentYear"></span>.<cite title="Source Title"> All Rights Reserved.</cite></footer>
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-bs-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            htmlElement.setAttribute('data-bs-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
 
-                <script>
-                // Get the current year
-                var currentYear = new Date().getFullYear();
+            const icon = themeToggle.querySelector('i');
+            icon.className = newTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+        });
 
-                // Update the content of the span with the current year
-                document.getElementById('currentYear').textContent = currentYear;
-                </script>
-              </blockquote>
-            </div>
-          </div>
-      </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        // Service filtering based on URL parameter
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set current year
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="index.js"></script>
+            // Set initial theme icon
+            const currentTheme = htmlElement.getAttribute('data-bs-theme') || 'dark';
+            const icon = themeToggle.querySelector('i');
+            icon.className = currentTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+
+            // Check for service parameter in URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const serviceParam = urlParams.get('service');
+
+            if (serviceParam) {
+                // Scroll to services section
+                document.getElementById('services').scrollIntoView({ behavior: 'smooth' });
+
+                // Highlight relevant service (optional - you could add visual indicator)
+                console.log(`Service requested: ${serviceParam}`);
+            }
+        });
+
+        // Add scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+                        // Observe elements
+                        document.querySelectorAll('.service-card, .process-step, .tech-item').forEach(el => observer.observe(el));
+                    </script>
 </body>
 </html>

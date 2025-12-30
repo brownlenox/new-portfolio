@@ -3,135 +3,916 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lenox Portfolio | Home</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="icon" type="image/x-icon" href="img/nav.png">
+    <title>Lenox Brown | Microsoft Dynamics 365 Business Central Developer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <script src="https://kit.fontawesome.com/3bc8c0c6b4.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="img/nav.png">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Home Page Specific Styles */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+    
+        .page-wrapper {
+            flex: 1 0 auto;
+        }
+    
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.85) 100%),
+                url('img/hero-bg.jpg') center/cover no-repeat;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+    
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(37, 99, 235, 0.2) 0%, transparent 50%);
+        }
+    
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+    
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff 0%, #93c5fd 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+    
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+    
+        .typewriter-text {
+            color: #60a5fa;
+            font-weight: 600;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+    
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+    
+        .btn-hero-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+        }
+    
+        .btn-hero-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.3);
+            color: white;
+        }
+    
+        .btn-hero-outline {
+            background: transparent;
+            color: white;
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+    
+        .btn-hero-outline:hover {
+            border-color: var(--primary);
+            background: rgba(37, 99, 235, 0.1);
+            color: white;
+            transform: translateY(-3px);
+        }
+    
+        .hero-profile {
+            position: relative;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+    
+        .profile-image-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            border: 3px solid transparent;
+            background: linear-gradient(135deg, var(--primary), var(--secondary)) border-box;
+        }
+    
+        .profile-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+    
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+    
+        .profile-badge {
+            position: absolute;
+            /* This needs a positioned parent (profile-image-wrapper) */
+            top: 20px;
+            right: 20px;
+            bottom: 89%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+            /* Ensure it stays above image */
+            white-space: nowrap;
+            /* Prevent text wrapping */
+        }
+    
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+    
+        .floating-element {
+            position: absolute;
+            background: rgba(37, 99, 235, 0.1);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+    
+        .floating-element:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+    
+        .floating-element:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            right: 10%;
+            animation-delay: -5s;
+        }
+    
+        .floating-element:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: -10s;
+        }
+    
+        @keyframes float {
+    
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+    
+            33% {
+                transform: translateY(-20px) rotate(120deg);
+            }
+    
+            66% {
+                transform: translateY(20px) rotate(240deg);
+            }
+        }
+    
+        /* Stats Section */
+        .stats-section {
+            padding: 4rem 0;
+            background: var(--card-bg);
+        }
+    
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+    
+        .stat-card:hover {
+            transform: translateY(-10px);
+        }
+    
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+    
+        .stat-label {
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+    
+        /* Featured Projects */
+        .featured-projects {
+            padding: 4rem 0;
+            background: var(--bg-primary);
+        }
+    
+        .project-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+    
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+    
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+    
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+    
+        .project-content {
+            padding: 1.5rem;
+        }
+    
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+    
+        .tech-tag {
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+    
+        /* Services Preview */
+        .services-preview {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.9));
+        }
+    
+        .service-icon-box {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 1.8rem;
+        }
+    
+        /* Testimonials */
+        .testimonial-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 2rem;
+            border: 1px solid var(--border);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+    
+        .testimonial-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+    
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 4rem;
+            color: var(--primary);
+            opacity: 0.2;
+            font-family: serif;
+        }
+    
+        /* Contact CTA */
+        .contact-cta {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 4rem 0;
+            border-radius: var(--radius);
+            margin: 4rem 0;
+            color: white;
+        }
+    
+        /* Sticky Footer */
+        footer {
+            flex-shrink: 0;
+            margin-top: auto;
+        }
+    
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+    
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+    
+            .cta-buttons {
+                flex-direction: column;
+            }
+    
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <nav class="container navbar navbar-expand-lg bg-body-tertiary rounded fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="img/lenox-logo.png" alt="Logo" class="img-nav">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/lenox-logo.png" alt="Lenox Brown Logo" style="height: 35px;">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="\index.html"><i class="fas fa-home mx-2"></i>Home</a>
+                        <a class="nav-link active" href="index.html"><i class="fas fa-home"></i> Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="\about.html"><i class="fas fa-user-secret mx-2"></i>About Me</a>
+                        <a class="nav-link" href="about.html"><i class="fas fa-user"></i> About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="\portfolio.html"><i class="far fa-address-book mx-2"></i>Portfolio</a>
+                        <a class="nav-link" href="portfolio.html"><i class="fas fa-code"></i> Portfolio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="\services.html"><i class="fas fa-tools mx-2"></i>Services</a>
+                        <a class="nav-link" href="services.html"><i class="fas fa-tools"></i> Services</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="\contact.html"><i class="fas fa-phone mx-2"></i>Contact</a>
+                        <a class="nav-link" href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
                     </li>
                 </ul>
+                <button class="btn theme-toggle ms-3" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
             </div>
         </div>
     </nav>
 
-    
-    
-      
-      
-      <div class="container baddd">
-        <div class="bg-body-tertiary rounded row">
-            <div class="col-lg-4">
-                <div class="custom-container mt-2" style="height:870px">
-                    <img src="img/elclassico.jpg" class="img-fluid" alt="Guido van Rossum" style="height: 700px; border-radius:10px;" loading="lazy">
-                    <div class="caption">
-                        <h5 class="card-title p-3">Lenox Brown</h5>
-                      <p class="card-text p-3">Software Engineer. Web devolper</p>
-                      <a href="/about.html" class="text-danger p-3">Learn more about me...</a>
-                    </div>
-                </div>
+    <!-- Main Content Wrapper -->
+    <div class="page-wrapper">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="floating-elements">
+                <div class="floating-element"></div>
+                <div class="floating-element"></div>
+                <div class="floating-element"></div>
             </div>
-            <div class="col-lg-6 mt-2 mb-2">
-                <div class="pt-3 pb-3 text-center">
-                    <h2 class="fw-bold" style="position: relative; display: inline-block;">
-                        Welcome to my Portfolio
-                        <span class="underline"></span>
-                    </h2>
-                </div>
-                <p id="intro">
-                    Greetings! I am a highly skilled individual with a passion for addressing diverse software needs. My expertise spans a wide spectrum, encompassing the development of dynamic and responsive web applications, meticulous maintenance of existing systems, and adept freelancing services for clients seeking top-notch solutions. Additionally, I am well-versed in remote work, ensuring seamless collaboration and delivery, regardless of geographical boundaries.
-                </p>
-                
-                <p id="details" style="display: none;">
-                    As a dedicated professional in the field of software development, I bring a wealth of experience to the table. My commitment to excellence is reflected in my proficiency in crafting robust and scalable web solutions tailored to meet the unique requirements of each project.<br>
-                    Whether you are looking for a creative mind to breathe life into your ideas, a reliable hand to maintain and enhance your existing software infrastructure, or a skilled freelancer for specialized tasks, I am here to cater to your specific needs.<br>
-                    With a strong foundation in various programming languages, frameworks, and technologies, I am capable of tackling challenges with innovation and efficiency. My adaptability and commitment to staying abreast of the latest industry trends ensure that the solutions I provide are not only current but also future-proof.<br>
-                    Feel free to explore my portfolio to gain insights into my previous projects and the diverse range of industries I've served. I am always open to new opportunities and collaborations, so let's connect and discuss how I can contribute to the success of your next project.
-                </p>
-                
-                <a href="javascript:void(0);" onclick="toggleReadMore()" id="read-more-btn" class="text-danger">Read More...</a>
-
-            
-
-                <div class="social-icons mt-2">
-                    <a href="https://twitter.com/brownlenox24" target="_blank" class="social-icon-link">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="https://www.instagram.com/brownlenox24/" target="_blank" class="social-icon-link">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://github.com/brownlenox" target="_blank" class="social-icon-link">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/lenox-ogutu-833959248/" target="_blank" class="social-icon-link">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                </div>
-
-                <div class="container social-icons">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body  text-center">
-                          <p class="card-text">Click icon. Let's chat.</p>
-                          <a href="https://wa.me/254745383292" target="_blank" class="social-icon-link mx-auto"><i class="fa-brands fa-whatsapp"></i></a>
+    
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 hero-content">
+                        <div class="mb-4">
+                            <span
+                                class="badge bg-primary bg-opacity-20 text-primary border border-primary border-opacity-50 px-3 py-2 rounded-pill mb-3">
+                                <i class="fas fa-badge-check me-2"></i>Microsoft Certified
+                            </span>
                         </div>
-                      </div>
-                    
+                        
+                        <h1 class="hero-title">Lenox Brown</h1>
+                        <h2 class="typewriter-text" id="typewriter"></h2>
+                        <p class="hero-subtitle">
+                            Transforming business challenges into innovative software solutions.
+                            Specializing in Microsoft Dynamics 365 Business Central, ERP systems,
+                            and AI-powered applications.
+                        </p>
+                        
+                        <div class="cta-buttons">
+                            <a href="portfolio.html" class="btn-hero-primary">
+                                <i class="fas fa-code me-2"></i>View My Work
+                            </a>
+                            <a href="contact.html" class="btn-hero-outline">
+                                <i class="fas fa-paper-plane me-2"></i>Get in Touch
+                            </a>
+                        </div>
+                        
+                        <div class="social-icons mt-4">
+                            <a href="https://github.com/brownlenox" class="social-icon-link" target="_blank">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/lenox-brown-4a6999356?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                                class="social-icon-link" target="_blank">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://twitter.com/brownlenox24" class="social-icon-link" target="_blank">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://wa.me/254745383292" class="social-icon-link" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="hero-profile">
+                                <div class="profile-image-wrapper">
+                                    <img src="img/professional-hero.jpeg" alt="Lenox Brown - Professional Photo" class="profile-image"
+                                        loading="lazy">
+                                    <div class="profile-badge">
+                                        <i class="fas fa-award me-1"></i> ERP Specialist
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        </div>
+                        </section>
+                        <!-- Stats Section -->
+                        <section class="stats-section">
+                            <div class="container">
+                                <div class="row text-center">
+                                    <div class="col-md-3 col-6 mb-4">
+                                        <div class="stat-card">
+                                            <div class="stat-number" data-count="22">22</div>
+                                            <div class="stat-label">Projects Completed</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-6 mb-4">
+                                        <div class="stat-card">
+                                            <div class="stat-number" data-count="4">4+</div>
+                                            <div class="stat-label">Years Experience</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-6 mb-4">
+                                        <div class="stat-card">
+                                            <div class="stat-number" data-count="9">9</div>
+                                            <div class="stat-label">Happy Clients</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-6 mb-4">
+                                        <div class="stat-card">
+                                            <div class="stat-number" data-count="92">92</div>
+                                            <div class="stat-label">% Satisfaction</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- Featured Projects -->
+                        <section class="featured-projects">
+                            <div class="container">
+                                <div class="section-header mb-5">
+                                    <h2>Featured Projects</h2>
+                                    <span class="underline"></span>
+                                    <p class="text-muted mt-3">Handpicked projects that showcase my expertise</p>
+                                    </div>
+                                    <div class="row g-4">
+                                        <div class="col-lg-4 col-md-6">
+                                            <div class="project-card">
+                                                <img src="img/block1.PNG" alt="Blocki Referrals App" class="project-image">
+                                                <div class="project-content">
+                                                    <h5 class="fw-bold">Blocki Referrals App</h5>
+                                                    <p class="text-muted">Aviator-style gambling platform with referral system for client
+                                                        engagement.</p>
+                                                    <div class="project-tech">
+                                                        <span class="tech-tag">Django</span>
+                                                        <span class="tech-tag">Python</span>
+                                                        <span class="tech-tag">PostgreSQL</span>
+                                                    </div>
+                                                    <a href="portfolio.html" class="btn btn-link text-primary p-0 mt-3">View Details →</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="project-card">
+                                            <img src="img/klassy1.PNG" alt="Klassy Restaurant" class="project-image">
+                                            <div class="project-content">
+                                                <h5 class="fw-bold">Klassy Restaurant System</h5>
+                                                <p class="text-muted">Complete restaurant management with online booking and reservation system.
+                                                </p>
+                                                <div class="project-tech">
+                                                    <span class="tech-tag">React</span>
+                                                    <span class="tech-tag">Node.js</span>
+                                                    <span class="tech-tag">MongoDB</span>
+                                                </div>
+                                                <a href="portfolio.html" class="btn btn-link text-primary p-0 mt-3">View Details →</a>
+                                                </div>
+                                                </div>
+                                                </div>
+                                                <div class="col-lg-4 col-md-6">
+                                                    <div class="project-card">
+                                                        <img src="img/project-erp.png" alt="ERP System" class="project-image">
+                                                        <div class="project-content">
+                                                            <h5 class="fw-bold">Business Central Integration</h5>
+                                                            <p class="text-muted">Custom Microsoft Dynamics 365 Business Central solution for enterprise
+                                                                client.</p>
+                                                            <div class="project-tech">
+                                                                <span class="tech-tag">Business Central</span>
+                                                                <span class="tech-tag">AL Language</span>
+                                                                <span class="tech-tag">Power Apps</span>
+                                                            </div>
+                                                            <a href="portfolio.html" class="btn btn-link text-primary p-0 mt-3">View Details →</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                <div class="text-center mt-5">
+                                                    <a href="portfolio.html" class="btn btn-primary px-4 py-2">
+                                                        <i class="fas fa-arrow-right me-2"></i> View All Projects
+                                                    </a>
+                                                </div>
+                                                </div>
+                                                </section>
+                                                <!-- Services Preview -->
+                                                <section class="services-preview">
+                                                    <div class="container">
+                                                        <div class="section-header mb-5">
+                                                            <h2 class="text-white">My Expertise</h2>
+                                                            <span class="underline"></span>
+                                                            <p class="text-light mt-3">Comprehensive software development services</p>
+                                                        </div>
+                                                        <div class="row g-4">
+                                                            <div class="col-lg-4 col-md-6">
+                                                                <div class="service-icon-box">
+                                                                    <i class="fab fa-microsoft"></i>
+                                                                </div>
+                                                                <h4 class="text-white">ERP Development</h4>
+                                                                <p class="text-light">Microsoft Dynamics 365 Business Central customization, AL development, and
+                                                                    business process automation.</p>
+                                                            </div>
+                                                            <div class="col-lg-4 col-md-6">
+                                                                <div class="service-icon-box">
+                                                                    <i class="fas fa-code"></i>
+                                                                </div>
+                                                                <h4 class="text-white">Web Development</h4>
+                                                                <p class="text-light">Full-stack web applications using modern frameworks like Django, React, and
+                                                                    Node.js.</p>
+                                                            </div>
+                                                            <div class="col-lg-4 col-md-6">
+                                                                <div class="service-icon-box">
+                                                                    <i class="fas fa-robot"></i>
+                                                                </div>
+                                                                <h4 class="text-white">AI Integration</h4>
+                                                                <p class="text-light">Implementing AI solutions with Azure AI services and custom machine learning
+                                                                    models.</p>
+                                                            </div>
+                                                        </div>
+                                                
+                                                        <div class="text-center mt-5">
+                                                            <a href="services.html" class="btn-hero-outline">
+                                                                <i class="fas fa-list me-2"></i> View All Services
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </section>
+                                                
+                                                <!-- Contact CTA -->
+                                                <section class="py-5 my-5">
+                                                    <div class="container">
+                                                        <div class="contact-cta">
+                                                            <div class="row align-items-center gy-4">
+                                                                <div class="col-lg-8">
+                                                                    <h3 class="display-6 fw-bold mb-3">Ready to Start Your Project?</h3>
+                                                                    <p class="lead mb-0">Let's discuss how I can help bring your ideas to life with cutting-edge
+                                                                        technology solutions.</p>
+                                                                </div>
+                                                                <div class="col-lg-4 text-lg-end">
+                                                                    <a href="contact.html" class="btn btn-light btn-lg px-5 py-3 fw-bold">
+                                                                        <i class="fas fa-paper-plane me-2"></i> Get in Touch
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </section>
+                                                
+                                                <style>
+                                                    /* Contact CTA Styles */
+                                                    .contact-cta {
+                                                        background: linear-gradient(135deg, var(--primary), var(--secondary));
+                                                        padding: 4rem 2.5rem;
+                                                        border-radius: 16px;
+                                                        color: white;
+                                                        position: relative;
+                                                        overflow: hidden;
+                                                        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+                                                    }
+                                                
+                                                    .contact-cta::before {
+                                                        content: '';
+                                                        position: absolute;
+                                                        top: -50%;
+                                                        right: -50%;
+                                                        width: 100%;
+                                                        height: 200%;
+                                                        background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+                                                        z-index: 1;
+                                                    }
+                                                
+                                                    .contact-cta .row {
+                                                        position: relative;
+                                                        z-index: 2;
+                                                    }
+                                                
+                                                    .contact-cta h3 {
+                                                        font-size: 2rem;
+                                                        font-weight: 700;
+                                                        margin-bottom: 1rem;
+                                                        color: white;
+                                                    }
+                                                
+                                                    .contact-cta p {
+                                                        font-size: 1.1rem;
+                                                        opacity: 0.9;
+                                                        margin-bottom: 0;
+                                                        color: rgba(255, 255, 255, 0.9);
+                                                    }
+                                                
+                                                    .contact-cta .btn-light {
+                                                        background: white;
+                                                        color: var(--primary);
+                                                        font-weight: 600;
+                                                        padding: 1rem 2rem;
+                                                        border-radius: 10px;
+                                                        transition: all 0.3s ease;
+                                                        border: 2px solid transparent;
+                                                        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                                                    }
+                                                
+                                                    .contact-cta .btn-light:hover {
+                                                        transform: translateY(-3px);
+                                                        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+                                                        background: white;
+                                                        color: var(--primary-dark);
+                                                        border-color: white;
+                                                    }
+                                                
+                                                    @media (max-width: 768px) {
+                                                        .contact-cta {
+                                                            padding: 3rem 1.5rem;
+                                                            text-align: center;
+                                                        }
+                                                
+                                                        .contact-cta h3 {
+                                                            font-size: 1.75rem;
+                                                        }
+                                                
+                                                        .contact-cta .btn-light {
+                                                            width: 100%;
+                                                            margin-top: 1.5rem;
+                                                            display: inline-block;
+                                                        }
+                
+                        .contact-cta .text-lg-end {
+                            text-align: center !important;
+                        }
+                    }
+                
+                    @media (max-width: 576px) {
+                        .contact-cta {
+                            padding: 2.5rem 1.25rem;
+                        }
+                
+                        .contact-cta h3 {
+                            font-size: 1.5rem;
+                        }
+                
+                        .contact-cta p {
+                            font-size: 1rem;
+                        }
+                    }
+                </style>
+                
+                <!-- Footer -->
+                <footer class="bg-dark text-white py-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-4 mb-4">
+                                <img src="img/lenox-logo.png" alt="Logo" class="mb-3" style="height: 35px;">
+                                <p class="text-light mb-4">Transforming business challenges into innovative software solutions with
+                                    expertise in ERP systems and modern web technologies.</p>
+                                <div class="social-icons">
+                                    <a href="https://github.com/brownlenox" class="social-icon-link" target="_blank">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                        <a href="https://www.linkedin.com/in/lenox-brown-4a6999356?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                            class="social-icon-link" target="_blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://twitter.com/brownlenox24" class="social-icon-link" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        </div>
                 </div>
                 
-
+                <div class="col-lg-2 col-6 mb-4">
+                    <h5 class="mb-4">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html" class="text-light text-decoration-none">Home</a></li>
+                        <li class="mb-2"><a href="about.html" class="text-light text-decoration-none">About</a></li>
+                        <li class="mb-2"><a href="portfolio.html" class="text-light text-decoration-none">Portfolio</a></li>
+                        <li class="mb-2"><a href="services.html" class="text-light text-decoration-none">Services</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-6 mb-4">
+                    <h5 class="mb-4">Services</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="services.html" class="text-light text-decoration-none">ERP Development</a></li>
+                        <li class="mb-2"><a href="services.html" class="text-light text-decoration-none">Web Applications</a></li>
+                        <li class="mb-2"><a href="services.html" class="text-light text-decoration-none">Mobile Apps</a></li>
+                        <li class="mb-2"><a href="services.html" class="text-light text-decoration-none">AI Integration</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5 class="mb-4">Contact Info</h5>
+                    <ul class="list-unstyled text-light">
+                        <li class="mb-2"><i class="fas fa-envelope me-2"></i> brownlenox24@gmail.com</li>
+                        <li class="mb-2"><i class="fas fa-phone me-2"></i> +254 745 383 292</li>
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Nairobi, Kenya</li>
+                    </ul>
+                </div>
             </div>
+            <hr class="border-secondary my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">© <span id="currentYear"></span> Lenox Brown. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">
+                        <i class="fas fa-coffee me-1"></i>
+                        "A cup of coffee keeps a million bugs away"
+                    </p>
+                </div>
+                </div>
         </div>
-      </div>
+    </footer>
 
-      <div class="container bg-body-tertiary rounded mt-2 mb-2">
-        <div class="card mt-2  mb-2">
-            <div class="card-header">
-              Lenox' says
-            </div>
-            <div class="card-body">
-              <blockquote class="blockquote mb-0">
-                <p>A cup of coffee, keeps a million bugs away</p>
-                <footer class="blockquote-footer" id="copyrightFooter">Copyright © <span id="currentYear"></span>.<cite title="Source Title"> All Rights Reserved.</cite></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+                                                                                                    // Theme Toggle
+                                                                                                    const themeToggle = document.getElementById('themeToggle');
+                                                                                                    const htmlElement = document.documentElement;
 
-                <script>
-                // Get the current year
-                var currentYear = new Date().getFullYear();
+                                                                                                    themeToggle.addEventListener('click', () => {
+                                                                                                        const currentTheme = htmlElement.getAttribute('data-bs-theme');
+                                                                                                        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                                                                                                        htmlElement.setAttribute('data-bs-theme', newTheme);
+                                                                                                        localStorage.setItem('theme', newTheme);
 
-                // Update the content of the span with the current year
-                document.getElementById('currentYear').textContent = currentYear;
-                </script>
-              </blockquote>
-            </div>
-          </div>
-      </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> 
+                                                                                                        const icon = themeToggle.querySelector('i');
+                                                                                                        icon.className = newTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+                                                                                                    });
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="index.js"></script>
+                                                                                                    // Typewriter Effect
+                                                                                                    const typewriterElement = document.getElementById('typewriter');
+                                                                                                    const texts = [
+                                                                                                        "Microsoft Dynamics 365 Business Central Developer",
+                                                                                                        "Full-Stack Software Engineer",
+                                                                                                        "ERP & Business Solutions Specialist",
+                                                                                                        "AI Integration Expert"
+                                                                                                    ];
+                                                                                                    let textIndex = 0;
+                                                                                                    let charIndex = 0;
+                                                                                                    let isDeleting = false;
+
+                                                                                                    function typeWriter() {
+                                                                                                        const currentText = texts[textIndex];
+
+                                                                                                        if (isDeleting) {
+                                                                                                            typewriterElement.textContent = currentText.substring(0, charIndex - 1);
+                                                                                                            charIndex--;
+                                                                                                        } else {
+                                                                                                            typewriterElement.textContent = currentText.substring(0, charIndex + 1);
+                                                                                                            charIndex++;
+                                                                                                        }
+
+                                                                                                        if (!isDeleting && charIndex === currentText.length) {
+                                                                                                            isDeleting = true;
+                                                                                                            setTimeout(typeWriter, 2000);
+                                                                                                        } else if (isDeleting && charIndex === 0) {
+                                                                                                            isDeleting = false;
+                                                                                                            textIndex = (textIndex + 1) % texts.length;
+                                                                                                            setTimeout(typeWriter, 500);
+                                                                                                        } else {
+                                                                                                            setTimeout(typeWriter, isDeleting ? 50 : 100);
+                                                                                                        }
+                                                                                                    }
+
+                                                                                                    // Animated Counter
+                                                                                                    function animateCounter() {
+                                                                                                        const counters = document.querySelectorAll('.stat-number');
+                                                                                                        const speed = 200;
+
+                                                                                                        counters.forEach(counter => {
+                                                                                                            const target = +counter.getAttribute('data-count');
+                                                                                                            const count = +counter.innerText;
+                                                                                                            const increment = target / speed;
+
+                                                                                                            if (count < target) {
+                                                                                                                counter.innerText = Math.ceil(count + increment);
+                                                                                                                setTimeout(animateCounter, 1);
+                                                                                                            } else {
+                                                                                                                counter.innerText = target;
+                                                                                                            }
+                                                                                                        });
+                                                                                                    }
+
+                                                                                                    // Intersection Observer for animations
+                                                                                                    const observer = new IntersectionObserver((entries) => {
+                                                                                                        entries.forEach(entry => {
+                                                                                                            if (entry.isIntersecting) {
+                                                                                                                entry.target.classList.add('fade-in');
+                                                                                                                if (entry.target.classList.contains('stat-number')) {
+                                                                                                                    animateCounter();
+                                                                                                                }
+                                                                                                            }
+                                                                                                        });
+                                                                                                    }, {
+                                                                                                        threshold: 0.1,
+                                                                                                        rootMargin: '0px 0px -50px 0px'
+                                                                                                    });
+
+                                                                                                    // Observe elements
+                                                                                                    document.querySelectorAll('.fade-in, .stat-card').forEach(el => observer.observe(el));
+
+                                                                                                    // Initialize
+                                                                                                    document.addEventListener('DOMContentLoaded', () => {
+                                                                                                        // Set current year
+                                                                                                        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+                                                                                                        // Start typewriter
+                                                                                                        setTimeout(typeWriter, 1000);
+                                                                                                
+                                                                                                    // Set initial theme icon
+                                                                                                    const currentTheme = htmlElement.getAttribute('data-bs-theme') || 'dark';
+                                                                                                    const icon = themeToggle.querySelector('i');
+                                                                                                    icon.className = currentTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+                                                                                                });
+                                                                                                </script>
 </body>
 </html>

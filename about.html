@@ -3,277 +3,726 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lenox Portfolio | About</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Lenox Brown | Software Engineer & Business Central Developer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/3bc8c0c6b4.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="img/nav.png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="container navbar navbar-expand-lg bg-body-tertiary fixed-top rounded">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="img/lenox-logo.png" alt="Logo" class="img-nav">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img src="img/lenox-logo.png" alt="Lenox Brown Logo">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="\index.html"><i class="fas fa-home mx-2"></i>Home</a>
+                        <a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="\about.html"><i class="fas fa-user-secret mx-2"></i>About Me</a>
+                        <a class="nav-link active" href="about.html"><i class="fas fa-user"></i> About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="\portfolio.html"><i class="far fa-address-book mx-2"></i>Portfolio</a>
+                        <a class="nav-link" href="portfolio.html"><i class="fas fa-code"></i> Portfolio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="\services.html"><i class="fas fa-tools mx-2"></i>Services</a>
+                        <a class="nav-link" href="services.html"><i class="fas fa-tools"></i> Services</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="\contact.html"><i class="fas fa-phone mx-2"></i>Contact</a>
+                        <a class="nav-link" href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
                     </li>
                 </ul>
+                <button class="btn theme-toggle" id="themeToggle">
+                  <i class="fas fa-moon"></i>
+                </button>
             </div>
         </div>
     </nav>
-    
-      
-      
-      <div class="container bg-body-tertiary rounded mb-2 baddd">
-        <div class="pt-3 text-center">
-            <h2 class="fw-bold" style="position: relative; display: inline-block;">
-                About
-                <span class="underline"></span>
-            </h2>
-        </div>
-        <div class="row">
-            <div class="col-lg-4">
-                <img class="img-thumbnail" src="img/pic.jpg" loading="lazy">
-            </div>
-            <div class="col-lg-3">
-                <div class="pt-3">
-                    <h5 class="">Personal info</h5>
-                </div>
-                <ol class="list-group list-group-numbered pb-2">
-                    <li class="list-group-item d-flex justify-content-between align-items-start">
-                      <div class="ms-2 me-auto">
-                        <div class="fw-bold">Name</div>
-                        Lenox Brown
-                      </div>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-start">
-                      <div class="ms-2 me-auto">
-                        <div class="fw-bold">Email</div>
-                        brownlenox24@<br>gmail.com
-                      </div>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-start">
-                      <div class="ms-2 me-auto">
-                        <div class="fw-bold">Phone</div>
-                        +254745383292
-                      </div>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-start">
-                        <div class="ms-2 me-auto">
-                          <div class="fw-bold">Birthday</div>
-                          04-10-2002
-                        </div>
-                      </li>
-                      <li class="list-group-item d-flex justify-content-between align-items-start">
-                        <div class="ms-2 me-auto">
-                          <div class="fw-bold">Hobbies</div>
-                          Singing, bike riding
-                        </div>
-                      </li>
-                      <li class="list-group-item d-flex justify-content-between align-items-start">
-                        <div class="ms-2 me-auto">
-                          <div class="fw-bold">City</div>
-                          Nairobi, Kenya
-                        </div>
-                      </li>
-                    
-                  </ol>
-            </div>
-            <div class="col-lg-3">
-                <div class="pt-3">
-                    <h5 class="">Languages & Frameworks</h5>
-                </div>
-                <ol class="list-group list-group-numbered pb-2">
-                    <li class="list-group-item d-flex justify-content-between align-items-start">
-                      <div class="ms-2 me-auto">
-                        <div class="fw-bold">Backend development</div>
-                        Django + HTML + CSS + bootstrap
-                      </div>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-start">
-                        <div class="ms-2 me-auto">
-                          <div class="fw-bold">Business Central</div>
-                          Application language(AL) developer
-                        </div>
-                      </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-start">
-                      <div class="ms-2 me-auto">
-                        <div class="fw-bold">Frontend development</div>
-                        React + bootstrap, e.t.c
-                      </div>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-start">
-                      <div class="ms-2 me-auto">
-                        <div class="fw-bold">Mobile development</div>
-                        Kotlin, Java
-                      </div>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-start">
-                        <div class="ms-2 me-auto">
-                          <div class="fw-bold">Databases</div>
-                          sqlite3, MySQL, PostgresSQL, MongoDB
-                        </div>
-                      </li>
-                      <li class="list-group-item d-flex justify-content-between align-items-start">
-                        <div class="ms-2 me-auto">
-                          <div class="fw-bold">ML & Data Analysis</div>
-                          Python
-                        </div>
-                      </li>
-                  </ol>
-            </div>
-        </div>
-      </div>
 
-      <div class="container bg-body-tertiary rounded mt-2 mb-4">
-        <div class="pt-3 text-center">
-            <h2 class="fw-bold" style="position: relative; display: inline-block;">
-                Milestone Tree
-                <span class="underline"></span>
-            </h2>
-        </div>
-        <div class="row tree">
-            <div class="col-md-3 node" data-toggle="tooltip" data-placement="bottom" title="High School">
-                <div class="node-content">
-                    <i class="icon fas fa-graduation-cap"></i>
-                    <p>High School</p>
-                </div>
+    <!-- About Content -->
+    <div class="container mt-5 pt-5">
+      <div class="row align-items-center mb-5 fade-in">
+        <div class="col-lg-4 text-center">
+          <div class="profile-img-container">
+            <img src="img/professional-headshot.jpeg" alt="Lenox Brown - Professional Headshot" class="profile-img"
+              loading="lazy">
+            <div class="profile-badge">
+              <i class="fas fa-badge-check"></i> Microsoft Certified
             </div>
-            <div class="col-md-3 node" data-toggle="tooltip" data-placement="bottom" title="College">
-                <div class="node-content">
-                    <i class="icon fas fa-graduation-cap"></i>
-                    <p>University</p>
                 </div>
-            </div>
-            <div class="col-md-3 node" data-toggle="tooltip" data-placement="bottom" title="Learned HTML/CSS">
-                <div class="node-content">
-                    <i class="icon fas fa-code"></i>
-                    <p>HTML/CSS</p>
                 </div>
-            </div>
-            <div class="col-md-3 node" data-toggle="tooltip" data-placement="bottom" title="Studied JavaScript">
-                <div class="node-content">
-                    <i class="icon fas fa-code"></i>
-                    <p>JavaScript</p>
+                <div class="col-lg-8">
+                  <h1 class="display-5 fw-bold mb-3">Lenox Brown</h1>
+                  <h4 class="text-primary mb-4">Microsoft Dynamics 365 Business Central Developer</h4>
+                  <p class="lead">Passionate software engineer specializing in ERP solutions, business process automation, and
+                    AI-powered applications. Based in Nairobi, Kenya.</p>
+                  <div class="d-flex gap-3">
+                    <a href="contact.html" class="btn btn-primary">Contact Me</a>
+                    <a href="img/Lenox Brown Ogutu.pdf" class="btn btn-outline-primary" target="_blank" rel="noopener noreferrer">
+                      <i class="fas fa-download"></i> Download CV
+                    </a>
+                  </div>
                 </div>
-            </div>
-            <div class="col-md-3 node" data-toggle="tooltip" data-placement="bottom" title="Started web development">
-                <div class="node-content">
-                    <i class="icon fas fa-laptop-code"></i>
-                    <p>Started Web Development</p>
                 </div>
-            </div>
-            <div class="col-md-3 node" data-toggle="tooltip" data-placement="bottom" title="Ventured into databases">
-                <div class="node-content">
-                    <i class="icon fas fa-database"></i>
-                    <p>Database Management</p>
-                </div>
-            </div>
-            <div class="col-md-3 node" data-toggle="tooltip" data-placement="bottom" title="Implemented python in data science">
-                <div class="node-content">
-                    <i class="fab fa-python"></i>
-                    <p>ML & Data Analysis</p>
-                </div>
-            </div>
-            <div class="col-md-3 node" data-toggle="tooltip" data-placement="bottom" title="Backend development using django">
-                <div class="node-content">
-                    <i class="icon fas fa-server"></i>
-                    <p>Backend Development</p>
-                </div>
-            </div>
-            <div class="col-md-3 node" data-toggle="tooltip" data-placement="bottom" title="Studied android development using both java and kotlin, majored on Kotlin">
-                <div class="node-content">
-                    <i class="icon fas fa-mobile-alt"></i>
-                    <p>Mobile App Development</p>
-                </div>
-            </div>
-            <!-- Add more nodes as needed -->
-        </div>
-    
-        </div>
-    </div>
-
-    <div class="container bg-body-tertiary rounded mt-5 mb-2">
-        <div class="pt-3 pb-3 text-center">
-            <h2 class="fw-bold" style="position: relative; display: inline-block;">
-                Moment of Inspiration
-                <span class="underline"></span>
-            </h2>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 mb-2 mt-2">
-                <div class="custom-container shadow" style="height:400px">
-                    <img src="img/guido.jpg" class="img-fluid" alt="Guido van Rossum" style="height: 230px; border-radius:10px;" loading="lazy">
-                    <div class="caption">
-                        <h5 class="card-title p-3">Name: Guido van Rossum</h5>
-                        <p class="card-text p-3">Reason: He created Python which was first released in, 1991.</p>
+                
+                <div class="row fade-in">
+                  <div class="col-lg-6 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                      <div class="card-body">
+                        <h4 class="card-title mb-4"><i class="fas fa-info-circle text-primary me-2"></i>Personal Info</h4>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                              <h6 class="text-muted">Name</h6>
+                              <p class="fw-semibold">Lenox Brown Ogutu</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <h6 class="text-muted">Email</h6>
+                              <p class="fw-semibold">brownlenox24@gmail.com</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <h6 class="text-muted">Phone</h6>
+                              <p class="fw-semibold">+254 745 383 292</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <h6 class="text-muted">Location</h6>
+                              <p class="fw-semibold">Nairobi, Kenya</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 mb-2 mt-2">
-                <div class="custom-container shadow" style="height:400px">
-                    <img src="img/eloon.jpg" class="img-fluid" alt="Elon Musk" style="height: 230px; border-radius:10px;" loading="lazy">
-                    <div class="caption">
-                        <h5 class="card-title p-3">Name: Elon Musk</h5>
-                        <p class="card-text p-3">Reason: The modern-day inspiration. Owns Tesla, SpaceX, etc.</p>
-                    </div>
+
+            <div class="col-lg-6 mb-4">
+              <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                  <h4 class="card-title mb-4"><i class="fas fa-code text-primary me-2"></i>Expertise</h4>
+                  <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <div class="skill-item">
+                        <h6>ERP Development</h6>
+                        <div class="progress" style="height: 6px;">
+                          <div class="progress-bar bg-primary" style="width: 95%"></div>
+                        </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <div class="skill-item">
+                                <h6>Web Development</h6>
+                                <div class="progress" style="height: 6px;">
+                                  <div class="progress-bar bg-primary" style="width: 90%"></div>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <div class="skill-item">
+                                <h6>Business Central</h6>
+                                <div class="progress" style="height: 6px;">
+                                  <div class="progress-bar bg-primary" style="width: 92%"></div>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <div class="skill-item">
+                                <h6>AI Integration</h6>
+                                <div class="progress" style="height: 6px;">
+                                  <div class="progress-bar bg-primary" style="width: 85%"></div>
+                                </div>
+                              </div>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+
+        <!-- Skills & Technologies -->
+        <div class="row fade-in">
+          <div class="col-12">
+            <div class="section-header mb-4">
+              <h2>Technical Stack</h2>
+              <span class="underline"></span>
                 </div>
-            </div>
-            <div class="col-lg-4 mb-2 mt-2">
-                <div class="custom-container shadow" style="height:400px">
-                    <img src="img/brendan.jpeg" class="img-fluid" alt="Brendan Eich" style="height: 230px; border-radius:10px;" loading="lazy">
-                    <div class="caption">
-                        <h5 class="card-title p-3">Name: Brendan Eich</h5>
-                        <p class="card-text p-3">Reason: He developed JavaScript in 10 days. This was in 1995. The father of Javascript.</p>
+                <div class="row g-4">
+                  <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                      <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                          <div class="bg-primary bg-opacity-10 p-3 rounded me-3">
+                            <i class="fas fa-server fa-2x text-primary"></i>
+                          </div>
+                          <h5 class="mb-0">Backend Development</h5>
+                        </div>
+                        <p class="text-muted">Django, Python, Node.js, API Development, REST Services</p>
+                      </div>
                     </div>
-                </div>
-            </div>
+                  </div>
+                  <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                      <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                          <div class="bg-primary bg-opacity-10 p-3 rounded me-3">
+                            <i class="fas fa-database fa-2x text-primary"></i>
+                          </div>
+                                    <h5 class="mb-0">Databases</h5>
+                                    </div>
+                                    <p class="text-muted">PostgreSQL, MySQL, MongoDB, SQLite, Database Design</p>
+                                    </div>
+                                    </div>
+                                    </div>
+                        <div class="col-md-6 col-lg-4">
+                          <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body">
+                              <div class="d-flex align-items-center mb-3">
+                                <div class="bg-primary bg-opacity-10 p-3 rounded me-3">
+                                  <i class="fab fa-microsoft fa-2x text-primary"></i>
+                                </div>
+                                <h5 class="mb-0">Microsoft Stack</h5>
+                              </div>
+                              <p class="text-muted">Business Central (AL), Power Apps, Power Automate, Azure AI</p>
+                              </div>
+                              </div>
+                        </div>
+<div class="col-md-6 col-lg-4">
+  <div class="card h-100 border-0 shadow-sm">
+    <div class="card-body">
+      <div class="d-flex align-items-center mb-3">
+        <div class="bg-primary bg-opacity-10 p-3 rounded me-3">
+          <i class="fas fa-mobile-alt fa-2x text-primary"></i>
+                                    </div>
+                                    <h5 class="mb-0">Mobile Development</h5>
+                                    </div>
+                                <p class="text-muted">Kotlin, Java, React Native, Cross-platform Apps</p>
+                            </div>
+                        </div>
+                        </div>
+<div class="col-md-6 col-lg-4">
+  <div class="card h-100 border-0 shadow-sm">
+    <div class="card-body">
+      <div class="d-flex align-items-center mb-3">
+        <div class="bg-primary bg-opacity-10 p-3 rounded me-3">
+          <i class="fas fa-brain fa-2x text-primary"></i>
         </div>
-    </div>
+                                    <h5 class="mb-0">AI & Data Science</h5>
+                                </div>
+                                <p class="text-muted">Python, Machine Learning, Data Analysis, Predictive Models</p>
+                                </div>
+                                </div>
+                    </div>
 
-      <div class="container bg-body-tertiary rounded mt-2 mb-2">
-        <div class="card mt-2  mb-2">
-            <div class="card-header">
-              Lenox' says
+                    <div class="col-md-6 col-lg-4">
+                      <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                          <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary bg-opacity-10 p-3 rounded me-3">
+                              <i class="fas fa-cloud fa-2x text-primary"></i>
+                            </div>
+                            <h5 class="mb-0">Cloud & DevOps</h5>
+                          </div>
+                          <p class="text-muted">Docker, CI/CD, Azure, AWS, Version Control (Git)</p>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
             </div>
-            <div class="card-body">
-              <blockquote class="blockquote mb-0">
-                <p>A cup of coffee, keeps a million bugs away</p>
-                <footer class="blockquote-footer" id="copyrightFooter">Copyright © <span id="currentYear"></span>.<cite title="Source Title"> All Rights Reserved.</cite></footer>
+            </div>
 
-                <script>
-                // Get the current year
-                var currentYear = new Date().getFullYear();
-
-                // Update the content of the span with the current year
-                document.getElementById('currentYear').textContent = currentYear;
-                </script>
-
-              </blockquote>
+        <!-- Career Journey -->
+        <style>
+          .timeline {
+            position: relative;
+            padding-left: 40px;
+            margin-top: 40px;
+            overflow: hidden;
+          }
+        
+          .timeline::before {
+            content: "";
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom,
+                rgba(var(--bs-primary-rgb), 0.2),
+                rgba(var(--bs-primary-rgb), 0.8),
+                rgba(var(--bs-primary-rgb), 0.2));
+            animation: timelineGlow 3s infinite alternate;
+          }
+        
+          @keyframes timelineGlow {
+            0% {
+              opacity: 0.6;
+            }
+        
+            100% {
+              opacity: 1;
+            }
+          }
+        
+          .timeline-item {
+            position: relative;
+            display: flex;
+            gap: 25px;
+            margin-bottom: 45px;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideIn 0.6s ease forwards;
+          }
+        
+          .timeline-item:nth-child(1) {
+            animation-delay: 0.2s;
+          }
+        
+          .timeline-item:nth-child(2) {
+            animation-delay: 0.4s;
+          }
+        
+          .timeline-item:nth-child(3) {
+            animation-delay: 0.6s;
+          }
+        
+          @keyframes slideIn {
+            to {
+              opacity: 1;
+              transform: translateX(0);
+            }
+          }
+        
+          .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -1px;
+            top: 8px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--bs-primary);
+            border: 5px solid var(--bs-body-bg);
+            box-shadow: 0 0 0 2px var(--bs-primary),
+              0 0 20px rgba(var(--bs-primary-rgb), 0.3);
+            z-index: 2;
+            transition: all 0.3s ease;
+          }
+        
+          .timeline-item:hover::before {
+            transform: scale(1.2);
+            box-shadow: 0 0 0 3px var(--bs-primary),
+              0 0 30px rgba(var(--bs-primary-rgb), 0.5);
+          }
+        
+          .timeline-date {
+            min-width: 140px;
+            font-weight: 700;
+            color: var(--bs-primary);
+            white-space: nowrap;
+            padding-top: 8px;
+            font-size: 1.1rem;
+            position: relative;
+          }
+        
+          .timeline-date::after {
+            content: "";
+            position: absolute;
+            right: -12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: var(--bs-primary);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+          }
+        
+          .timeline-item:hover .timeline-date::after {
+            opacity: 1;
+            animation: pulse 1s infinite;
+          }
+        
+          @keyframes pulse {
+            0% {
+              transform: translateY(-50%) scale(1);
+            }
+        
+            50% {
+              transform: translateY(-50%) scale(1.3);
+            }
+        
+            100% {
+              transform: translateY(-50%) scale(1);
+            }
+          }
+        
+          .timeline-content {
+            background: linear-gradient(145deg,
+                rgba(var(--bs-body-bg-rgb), 0.9),
+                rgba(var(--bs-body-bg-rgb), 0.7));
+            padding: 25px;
+            border-radius: 15px;
+            width: 100%;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-left: 4px solid transparent;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+          }
+        
+          .timeline-content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right,
+                var(--bs-primary),
+                rgba(var(--bs-primary-rgb), 0.3));
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+          }
+        
+          .timeline-item:hover .timeline-content {
+            transform: translateY(-8px) translateX(5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border-left-color: var(--bs-primary);
+          }
+        
+          .timeline-item:hover .timeline-content::before {
+            transform: translateX(0);
+          }
+        
+          .timeline-content h5 {
+            margin-bottom: 8px;
+            font-weight: 700;
+            color: var(--bs-heading-color);
+            font-size: 1.3rem;
+            position: relative;
+            display: inline-block;
+          }
+        
+          footer {
+            margin-top: 60px;
+          }
+        
+          .timeline-content h5::after {
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--bs-primary);
+            transition: width 0.4s ease;
+          }
+        
+          .timeline-item:hover .timeline-content h5::after {
+            width: 100%;
+          }
+        
+          .timeline-content .text-muted {
+            font-weight: 500;
+            margin-bottom: 12px;
+            color: var(--bs-secondary) !important;
+            font-size: 1rem;
+          }
+        
+          .timeline-content p:last-child {
+            margin-bottom: 0;
+            line-height: 1.7;
+            color: var(--bs-body-color);
+          }
+        
+          /* Badge styles */
+          .timeline-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(var(--bs-primary-rgb), 0.1);
+            color: var(--bs-primary);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 10px;
+            border: 1px solid rgba(var(--bs-primary-rgb), 0.2);
+            transition: all 0.3s ease;
+          }
+        
+          .timeline-item:hover .timeline-badge {
+            background: var(--bs-primary);
+            color: white;
+            transform: translateY(-2px);
+          }
+        
+          /* Responsive design */
+          @media (max-width: 768px) {
+            .timeline {
+              padding-left: 30px;
+            }
+        
+            .timeline::before {
+              left: 10px;
+            }
+        
+            .timeline-item {
+              flex-direction: column;
+              gap: 10px;
+              margin-bottom: 35px;
+            }
+        
+            .timeline-item::before {
+              width: 24px;
+              height: 24px;
+              left: -3px;
+            }
+        
+            .timeline-date {
+              min-width: auto;
+              padding-top: 0;
+              font-size: 1rem;
+            }
+        
+            .timeline-date::after {
+              display: none;
+            }
+        
+            .timeline-content {
+              padding: 20px;
+            }
+        
+            .timeline-content h5 {
+              font-size: 1.2rem;
+            }
+        
+            .timeline-item:hover .timeline-content {
+              transform: translateY(-5px);
+            }
+          }
+        
+          /* Section header enhancements */
+          .section-header {
+            position: relative;
+            margin-bottom: 50px;
+          }
+        
+          .section-header h2 {
+            font-weight: 800;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+          }
+        
+          .underline {
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right,
+                var(--bs-primary),
+                rgba(var(--bs-primary-rgb), 0.5));
+            margin: 0 auto;
+            border-radius: 2px;
+            position: relative;
+            overflow: hidden;
+          }
+        
+          .underline::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right,
+                transparent,
+                rgba(255, 255, 255, 0.8),
+                transparent);
+            animation: shine 3s infinite;
+          }
+        
+          @keyframes shine {
+            0% {
+              left: -100%;
+            }
+        
+            100% {
+              left: 100%;
+            }
+          }
+        </style>
+        
+        <div class="row mt-5 fade-in">
+          <div class="col-12">
+            <div class="section-header mb-5 text-center">
+              <h2 class="display-5 fw-bold">Career Journey</h2>
+              <span class="underline mt-3"></span>
+              <p class="text-muted mt-4 fs-5">A timeline of growth, learning, and professional achievements</p>
+            </div>
+            <div class="timeline">
+              <!-- Current Position -->
+              <div class="timeline-item">
+                <div class="timeline-date"></div>
+                <div class="timeline-content">
+                  <div class="timeline-date p-3">2025 – Present</div>
+                  <h5>Business Central Developer</h5>
+                  <p class="text-muted mb-2">Software Dynamics</p>
+                  <p>Leading ERP solutions development and AI integration projects for enterprise clients, driving digital
+                    transformation and innovation.</p>
+                  <div class="mt-3">
+                    <span class="timeline-badge me-2">ERP Solutions</span>
+                    <span class="timeline-badge me-2">AI Integration</span>
+                    <span class="timeline-badge">Enterprise Development</span>
+                  </div>
+                </div>
+              </div>
+              <!-- Previous Role -->
+              <div class="timeline-item">
+                <div class="timeline-date"></div>
+                <div class="timeline-content">
+                  <div class="timeline-date p-3">2024</div>
+                  <h5>Software Developer Attaché</h5>
+                  <p class="text-muted mb-2">Greencom Enterprise Solutions</p>
+                  <p>Specialized in Microsoft Dynamics 365 Business Central customization and development, delivering tailored
+                    solutions for diverse business needs.</p>
+                  <div class="mt-3">
+                    <span class="timeline-badge me-2">Dynamics 365</span>
+                    <span class="timeline-badge me-2">Business Central</span>
+                    <span class="timeline-badge">Custom Solutions</span>
+                  </div>
+                </div>
+              </div>
+              <!-- Education -->
+              <div class="timeline-item">
+                <div class="timeline-date"></div>
+                <div class="timeline-content">
+                  <div class="timeline-date p-3">2021 – 2025</div>
+                  <h5>BSc Software Engineering</h5>
+                  <p class="text-muted mb-2">Cooperative University of Kenya</p>
+                  <p>Graduated with Second Class Upper Honors. Developed expertise in enterprise software solutions, system
+                    architecture, and modern development practices.</p>
+                  <div class="mt-3">
+                    <span class="timeline-badge me-2">Second Class Upper</span>
+                    <span class="timeline-badge me-2">Software Architecture</span>
+                    <span class="timeline-badge">Academic Excellence</span>
+                  </div>
+                  <div class="timeline-badge d-inline-block mt-3 bg-success bg-opacity-10 text-success border-success">
+                    <i class="fas fa-award me-2"></i>Dean's List 2023
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Timeline End Marker -->
+            <div class="text-center mt-5 pt-3">
+              <div class="d-inline-block px-4 py-2 rounded-pill bg-primary bg-opacity-10 text-primary">
+                <i class="fas fa-arrow-down me-2"></i>Journey Continues
+              </div>
             </div>
           </div>
-      </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="index.js"></script>
+        </div>
+    </div>
+    </div>
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 mb-4">
+            <img src="img/lenox-logo.png" alt="Logo" class="mb-3" style="height: 35px;">
+            <p class="text-light mb-4">Transforming business challenges into innovative software solutions with
+              expertise in ERP systems and modern web technologies.</p>
+            <div class="social-icons">
+              <a href="https://github.com/brownlenox" class="social-icon-link" target="_blank">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/lenox-brown-4a6999356?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                class="social-icon-link" target="_blank">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="https://twitter.com/brownlenox24" class="social-icon-link" target="_blank">
+                <i class="fab fa-twitter"></i>
+              </a>
+                        </div>
+                        </div>
+                <div class="col-lg-2 col-6 mb-4">
+                  <h5 class="mb-4">Quick Links</h5>
+                  <ul class="list-unstyled">
+                    <li class="mb-2"><a href="index.html" class="text-light text-decoration-none">Home</a></li>
+                    <li class="mb-2"><a href="about.html" class="text-light text-decoration-none">About</a></li>
+                    <li class="mb-2"><a href="portfolio.html" class="text-light text-decoration-none">Portfolio</a></li>
+                    <li class="mb-2"><a href="services.html" class="text-light text-decoration-none">Services</a></li>
+                  </ul>
+                </div>
+                <div class="col-lg-3 col-6 mb-4">
+                  <h5 class="mb-4">Services</h5>
+                  <ul class="list-unstyled">
+                    <li class="mb-2"><a href="services.html" class="text-light text-decoration-none">ERP Development</a></li>
+                    <li class="mb-2"><a href="services.html" class="text-light text-decoration-none">Web Applications</a></li>
+                    <li class="mb-2"><a href="services.html" class="text-light text-decoration-none">Mobile Apps</a></li>
+                    <li class="mb-2"><a href="services.html" class="text-light text-decoration-none">AI Integration</a></li>
+                  </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                  <h5 class="mb-4">Contact Info</h5>
+                  <ul class="list-unstyled text-light">
+                    <li class="mb-2"><i class="fas fa-envelope me-2"></i> brownlenox24@gmail.com</li>
+                    <li class="mb-2"><i class="fas fa-phone me-2"></i> +254 745 383 292</li>
+                    <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Nairobi, Kenya</li>
+                  </ul>
+                </div>
+                </div>
+                <hr class="border-secondary my-4">
+                <div class="row align-items-center">
+                  <div class="col-md-6">
+                    <p class="mb-0">© <span id="currentYear"></span> Lenox Brown. All rights reserved.</p>
+                  </div>
+                  <div class="col-md-6 text-md-end">
+                    <p class="mb-0">
+                      <i class="fas fa-coffee me-1"></i>
+                      "A cup of coffee keeps a million bugs away"
+                    </p>
+                  </div>
+                  </div>
+                </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+                                                                                            // Theme Toggle
+                                                                                            const themeToggle = document.getElementById('themeToggle');
+                                                                                            const htmlElement = document.documentElement;
+
+                                                                                            themeToggle.addEventListener('click', () => {
+                                                                                              const currentTheme = htmlElement.getAttribute('data-bs-theme');
+                                                                                              const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                                                                                              htmlElement.setAttribute('data-bs-theme', newTheme);
+                                                                                              localStorage.setItem('theme', newTheme);
+
+                                                                                              const icon = themeToggle.querySelector('i');
+                                                                                              icon.className = newTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+                                                                                            });
+
+                                                                                            // Set current year
+                                                                                            document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+                                                                                            // Add fade-in animation on scroll
+                                                                                            const observerOptions = {
+                                                                                              threshold: 0.1,
+                                                                                              rootMargin: '0px 0px -50px 0px'
+                                                                                            };
+
+                                                                                            const observer = new IntersectionObserver((entries) => {
+                                                                                              entries.forEach(entry => {
+                                                                                                if (entry.isIntersecting) {
+                                                                                                  entry.target.classList.add('fade-in');
+                                                                                                }
+                                                                                              });
+                                                                                            }, observerOptions);
+
+                                                                                            document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+                                                                                          </script>
 </body>
 </html>

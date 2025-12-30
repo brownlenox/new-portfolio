@@ -3,132 +3,772 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lenox Portfolio | Contact</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Lenox Brown | Contact - Get in Touch for Software Solutions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <script src="https://kit.fontawesome.com/3bc8c0c6b4.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <link rel="icon" type="image/x-icon" href="img/nav.png">
     <link rel="stylesheet" href="style.css">
-    <script type="text/javascript"
-            src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
-    </script>
+    <style>
+        /* Contact Page Specific Styles */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
     
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .page-wrapper {
+            flex: 1 0 auto;
+        }
+        
+        .contact-hero {
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 100%),
+                url('img/contact-bg.jpg') center/cover no-repeat;
+            padding-top: 100px;
+            margin-bottom: 3rem;
+        }
+
+        .contact-info-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            height: auto;
+        }
+
+        .contact-info-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form-container {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2.5rem;
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-label {
+            color: var(--text-primary);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control, .form-select {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            border-radius: 8px;
+            padding: 0.875rem 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus, .form-select:focus {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+            color: var(--text-primary);
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: none;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.02);
+            transition: all 0.3s ease;
+        }
+
+        .contact-method:hover {
+            background: rgba(37, 99, 235, 0.05);
+            transform: translateX(5px);
+        }
+
+        .contact-method-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .availability-status {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-top: 1rem;
+        }
+
+        .availability-status:before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .map-container {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            height: 300px;
+            background: var(--card-bg);
+        }
+
+        .success-message {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #10b981;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .error-message {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #ef4444;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .whatsapp-cta {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .social-contact {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            justify-content: center;
+        }
+
+        /* FAQ Section Fix */
+        .faq-container {
+            margin-top: 2rem;
+        }
+        
+        .accordion-button {
+            background: var(--card-bg);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+            padding: 1rem 1.25rem;
+        }
+        
+        .accordion-button:not(.collapsed) {
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .accordion-button:focus {
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+            border-color: var(--primary);
+        }
+        
+        .accordion-body {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-top: none;
+            padding: 1.25rem;
+        }
+        
+        .accordion-item {
+            border: none;
+            margin-bottom: 1rem;
+        }
+        
+        .accordion-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Sticky Footer - FIXED */
+        footer {
+            flex-shrink: 0;
+            margin-top: auto;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .contact-form-container {
+                padding: 1.5rem;
+            }
+            
+            .contact-hero {
+                min-height: 40vh;
+                padding-top: 80px;
+            }
+            
+            .accordion-button {
+                padding: 0.875rem 1rem;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <nav class="container navbar navbar-expand-lg bg-body-tertiary rounded fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="img/lenox-logo.png" alt="Logo" class="img-nav">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/lenox-logo.png" alt="Lenox Brown Logo" style="height: 35px;">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="\index.html"><i class="fas fa-home mx-2"></i>Home</a>
+                        <a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="\about.html"><i class="fas fa-user-secret mx-2"></i>About Me</a>
+                        <a class="nav-link" href="about.html"><i class="fas fa-user"></i> About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="\portfolio.html"><i class="far fa-address-book mx-2"></i>Portfolio</a>
+                        <a class="nav-link" href="portfolio.html"><i class="fas fa-code"></i> Portfolio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="\services.html"><i class="fas fa-tools mx-2"></i>Services</a>
+                        <a class="nav-link" href="services.html"><i class="fas fa-tools"></i> Services</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="\contact.html"><i class="fas fa-phone mx-2"></i>Contact</a>
+                        <a class="nav-link active" href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
                     </li>
                 </ul>
+                <button class="btn theme-toggle ms-3" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
             </div>
         </div>
     </nav>
 
-    <div class="container bg-body-tertiary rounded mb-2 baddd">
-        <div class="pt-3 text-center">
-            <h2 class="fw-bold" style="position: relative; display: inline-block;">
-                Contact
-                <span class="underline"></span>
-            </h2>
-        </div>
+    <!-- Main Content Wrapper -->
+    <div class="page-wrapper">
+        <!-- Contact Hero -->
+        <section class="contact-hero">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <h1 class="display-4 fw-bold mb-3 text-white">Let's Work Together</h1>
+                        <p class="lead mb-4 text-white">Ready to bring your software project to life? Get in touch for a
+                            free
+                            consultation on your ERP, web, or mobile application needs.</p>
+                        <div class="availability-status">
+                            <i class="fas fa-circle me-2"></i> Available for new projects
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+                    </section>
+
+        <!-- Contact Content -->
+        <div class="container mb-5">
+            <div class="row g-4">
+                <!-- Contact Information -->
+                <div class="col-lg-4">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Location</h4>
+                        <p class="mb-4">Based in Nairobi, Kenya<br>Serving clients worldwide</p>
         
-        <div class="row">
-            <div class="col-lg-5">
-                <div class="container mt-2 mb-2 shadow rounded">
-                    <div class="social-icons mt-2">
-                        <a target="_blank" class="social-icon-link">
-                            <i class="fa-solid fa-phone"></i>
-                        </a>
-                        <div class="container">
-                            <p class="">+254745383292</p>
+                        <div class="contact-method">
+                            <div class="contact-method-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Phone</h6>
+                                <p class="mb-0">+254 745 383 292</p>
+                                <small class="text-muted">Available: Mon-Fri, 9AM-6PM EAT</small>
+                            </div>
                         </div>
-                    </div>
-                    <div class="social-icons mt-2">
-                        <a target="_blank" class="social-icon-link">
-                            <i class="fa-solid fa-envelope"></i>
-                        </a>
-                        <div class="container">
-                            <p class="">brownlenox24@<br>gmail.com</p>
+        
+                        <div class="contact-method">
+                            <div class="contact-method-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Email</h6>
+                                <p class="mb-0">brownlenox24@gmail.com</p>
+                                <small class="text-muted">Response within 24 hours</small>
+                            </div>
                         </div>
+        
+                        <div class="whatsapp-cta">
+                            <h6 class="fw-bold mb-2">
+                                <i class="fab fa-whatsapp me-2"></i>Quick WhatsApp Chat
+                            </h6>
+                            <p class="mb-3">Get instant responses for urgent inquiries</p>
+                            <a href="https://wa.me/254745383292" target="_blank" class="btn btn-light btn-sm">
+                                <i class="fab fa-whatsapp me-2"></i> Message on WhatsApp
+                            </a>
+                        </div>
+        <div class="social-contact">
+            <a href="https://github.com/brownlenox" class="social-icon-link" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+                            <a href="https://www.linkedin.com/in/lenox-brown-4a6999356?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                                class="social-icon-link" target="_blank">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://twitter.com/brownlenox24" class="social-icon-link" target="_blank">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                        </div>
+                        <!-- Response Time -->
+                        <div class="contact-info-card mt-4">
+                            <h5 class="fw-bold mb-3">
+                                <i class="fas fa-clock text-primary me-2"></i>Response Time
+                            </h5>
+                            <div class="mb-3">
+                                <h6 class="fw-bold mb-1">Email Inquiries</h6>
+                                <p class="text-muted mb-2">Within 24 hours</p>
+                                <div class="progress" style="height: 6px;">
+                                    <div class="progress-bar bg-primary" style="width: 95%"></div>
+                                </div>
+                                </div>
+                            <div class="mb-3">
+                                <h6 class="fw-bold mb-1">Project Proposals</h6>
+                                <p class="text-muted mb-2">Within 48 hours</p>
+                                <div class="progress" style="height: 6px;">
+                                    <div class="progress-bar bg-primary" style="width: 90%"></div>
+                                </div>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-1">Consultation Calls</h6>
+                                    <p class="text-muted mb-2">Scheduled within 72 hours</p>
+                                    <div class="progress" style="height: 6px;">
+                                        <div class="progress-bar bg-primary" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                </div>
+                                </div>
+                                <!-- Contact Form -->
+                                <div class="col-lg-8">
+                                    <div class="contact-form-container">
+                                        <div class="section-header mb-4">
+                                            <h2>Send a Message</h2>
+                                            <span class="underline"></span>
+                                            <p class="text-muted mt-2">Fill out the form below and I'll get back to you as soon as possible</p>
+                                        </div>
+                                        <!-- Success/Error Messages -->
+                                        <div id="successMessage" class="success-message">
+                                            <i class="fas fa-check-circle me-2"></i>
+                                            <span id="successText">Your message has been sent successfully! I'll get back to you within 24 hours.</span>
+                                        </div>
+                                        <div id="errorMessage" class="error-message">
+                                            <i class="fas fa-exclamation-circle me-2"></i>
+                                            <span id="errorText">There was an error sending your message. Please try again or contact me
+                                                directly.</span>
+                                        </div>
+                                        <form id="contactForm" novalidate>
+                                            <input type="hidden" name="bot-field">
+                                            <div class="row">
+                                                <div class="col-md-6 mb-3">
+                                                    <label for="name" class="form-label">Full Name *</label>
+                                                    <input type="text" class="form-control" id="name" name="name" required>
+                                    <div class="invalid-feedback">
+                                        Please enter your full name.
+                                    </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="email" class="form-label">Email Address *</label>
+                                        <input type="email" class="form-control" id="email" name="email" required>
+                                        <div class="invalid-feedback">
+                                            Please enter a valid email address.
+                                        </div>
+                                    </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="service" class="form-label">Service Interested In</label>
+                                <select class="form-select" id="service" name="service">
+                                    <option value="">Select a service...</option>
+                                    <option value="erp">Microsoft Dynamics 365 Business Central</option>
+                                    <option value="web">Web Application Development</option>
+                                    <option value="mobile">Mobile App Development</option>
+                                    <option value="ai">AI Integration & Data Analytics</option>
+                                    <option value="database">Database Design & Management</option>
+                                    <option value="consultation">General Consultation</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                </div>
+                                
+                                <div class="mb-3">
+                                <label for="subject" class="form-label">Subject *</label>
+                                <input type="text" class="form-control" id="subject" name="subject" required>
+                                <div class="invalid-feedback">
+                                    Please enter a subject for your message.
+                                </div>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="message" class="form-label">Message *</label>
+                                    <textarea class="form-control" id="message" name="message" rows="6" required></textarea>
+                                    <div class="invalid-feedback">
+                                        Please enter your message.
+                                    </div>
+                                    <div class="form-text">
+                                        Please include details about your project requirements, timeline, and budget if applicable.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="newsletter" name="newsletter">
+                                    <label class="form-check-label" for="newsletter">
+                                        Subscribe to my newsletter for tech insights and updates
+                                    </label>
+                                </div>
+                                </div>
+                                <button type="submit" class="btn-submit" id="submitBtn">
+                                    <span id="submitText">Send Message</span>
+                                    <span id="loadingSpinner" class="spinner-border spinner-border-sm ms-2" role="status" aria-hidden="true"
+                                        style="display: none;"></span>
+                                </button>
+                                </form>
+                                
+                                <div class="text-center mt-4">
+                                    <p class="text-muted mb-0">
+                                        <i class="fas fa-lock me-2"></i>Your information is secure and will not be shared with third parties.
+                                    </p>
+                                </div>
+                                </div>
+                                <!-- FAQ Section -->
+                                <div class="contact-info-card mt-4">
+                                    <h5 class="fw-bold mb-4">
+                                        <i class="fas fa-question-circle text-primary me-2"></i>Frequently Asked Questions
+                                    </h5>
+                                    <div class="accordion" id="contactFAQ">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                                    data-bs-target="#faq1">
+                                                    What information should I include in my inquiry?
+                                                </button>
+                                            </h2>
+                                            <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#contactFAQ">
+                                                <div class="accordion-body">
+                                                    Please include: Project overview, your goals, timeline, budget range (if any), and any specific
+                                                    technologies or features required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                                    data-bs-target="#faq2">
+                                                    Do you offer free consultations?
+                                                </button>
+                                            </h2>
+                                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#contactFAQ">
+                                                <div class="accordion-body">
+                                                    Yes, I offer a free 30-minute initial consultation to discuss your project requirements and how I
+                                                    can help.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                                    data-bs-target="#faq3">
+                                                    What are your working hours?
+                                                </button>
+                                            </h2>
+                                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#contactFAQ">
+                                                <div class="accordion-body">
+                                                    I work Monday to Friday, 9:00 AM to 6:00 PM East Africa Time (EAT). Urgent inquiries via WhatsApp
+                                                    may receive responses outside these hours.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <img src="img/lenox-logo.png" alt="Logo" class="mb-3" style="height: 35px;">
+                    <p class="text-light mb-4">Innovative software solutions for modern business challenges.</p>
+                    <div class="social-icons">
+                        <a href="https://github.com/brownlenox" class="social-icon-link" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/lenox-brown-4a6999356?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                            class="social-icon-link" target="_blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://twitter.com/brownlenox24" class="social-icon-link" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                        </a>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-5">
-                <div class="container mt-2 mb-2 shadow rounded">
-                        <input type="hidden" name="bot-field" />
-            
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="name" name="name" required>
-                        </div>
-            
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
-                        </div>
-            
-                        <div class="mb-3">
-                            <label for="subject" class="form-label">Subject</label>
-                            <input type="text" class="form-control" id="subject" name="subject" required>
-                        </div>
-            
-                        <div class="mb-3">
-                            <label for="message" class="form-label">Message</label>
-                            <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
-                        </div>
-            
-                        <button type="submit" class="btn btn-danger mb-2" onclick="sendMail()">Send Message</button>
+                <div class="col-lg-2 col-6 mb-4">
+                    <h5 class="mb-4">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html" class="text-light text-decoration-none">Home</a></li>
+                        <li class="mb-2"><a href="about.html" class="text-light text-decoration-none">About</a></li>
+                        <li class="mb-2"><a href="portfolio.html" class="text-light text-decoration-none">Portfolio</a></li>
+                        <li class="mb-2"><a href="services.html" class="text-light text-decoration-none">Services</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-6 mb-4">
+                    <h5 class="mb-4">Services</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="services.html" class="text-light text-decoration-none">ERP Development</a>
+                        </li>
+                        <li class="mb-2"><a href="services.html" class="text-light text-decoration-none">Web
+                                Applications</a></li>
+                        <li class="mb-2"><a href="services.html" class="text-light text-decoration-none">Mobile Apps</a>
+                        </li>
+                        <li class="mb-2"><a href="services.html" class="text-light text-decoration-none">AI Integration</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5 class="mb-4">Contact Info</h5>
+                    <ul class="list-unstyled text-light">
+                        <li class="mb-2"><i class="fas fa-envelope me-2"></i> brownlenox24@gmail.com</li>
+                        <li class="mb-2"><i class="fas fa-phone me-2"></i> +254 745 383 292</li>
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Nairobi, Kenya</li>
+                    </ul>
                 </div>
             </div>
-        </div>
-    </div>
-      
-      <div class="container bg-body-tertiary rounded mt-2 mb-2">
-        <div class="card mt-2  mb-2">
-            <div class="card-header">
-              Lenox' says
-            </div>
-            <div class="card-body">
-              <blockquote class="blockquote mb-0">
-                <p>A cup of coffee, keeps a million bugs away</p>
-                <footer class="blockquote-footer" id="copyrightFooter">Copyright © <span id="currentYear"></span>.<cite title="Source Title"> All Rights Reserved.</cite></footer>
+            <hr class="border-secondary my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">© <span id="currentYear"></span> Lenox Brown. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">
+                        <i class="fas fa-coffee me-1"></i>
+                        "A cup of coffee keeps a million bugs away"
+                    </p>
+                </div>
+                </div>
+                </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Initialize EmailJS (Replace with your actual credentials)
+        (function () {
+            emailjs.init("YOUR_PUBLIC_KEY_HERE"); // Get from EmailJS dashboard
+        })();
 
-                <script>
-                // Get the current year
-                var currentYear = new Date().getFullYear();
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
 
-                // Update the content of the span with the current year
-                document.getElementById('currentYear').textContent = currentYear;
-                </script>
-              </blockquote>
-            </div>
-          </div>
-      </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-bs-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            htmlElement.setAttribute('data-bs-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="index.js"></script>
-    <script src="submit-form.js"></script>
-    <script src="config.js"></script>
+            const icon = themeToggle.querySelector('i');
+            icon.className = newTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+        });
+
+        // Form Validation and Submission
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set current year
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+            // Set initial theme icon
+            const currentTheme = htmlElement.getAttribute('data-bs-theme') || 'dark';
+            const icon = themeToggle.querySelector('i');
+            icon.className = currentTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+
+            // Form elements
+            const contactForm = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const submitText = document.getElementById('submitText');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+
+            // Form validation
+            contactForm.addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                // Hide previous messages
+                successMessage.style.display = 'none';
+                errorMessage.style.display = 'none';
+
+                // Validate form
+                if (!this.checkValidity()) {
+                    e.stopPropagation();
+                    this.classList.add('was-validated');
+                    return;
+                }
+
+                // Show loading state
+                submitBtn.disabled = true;
+                submitText.textContent = 'Sending...';
+                loadingSpinner.style.display = 'inline-block';
+
+                try {
+                    // Prepare form data
+                    const formData = {
+                        name: document.getElementById('name').value,
+                        email: document.getElementById('email').value,
+                        service: document.getElementById('service').value,
+                        subject: document.getElementById('subject').value,
+                        message: document.getElementById('message').value,
+                        newsletter: document.getElementById('newsletter').checked ? 'Yes' : 'No',
+                        timestamp: new Date().toISOString()
+                    };
+
+                    // Send email using EmailJS
+                    const response = await emailjs.send(
+                        'YOUR_SERVICE_ID',    // Replace with your EmailJS service ID
+                        'YOUR_TEMPLATE_ID',   // Replace with your EmailJS template ID
+                        formData
+                    );
+
+                    // Success
+                    successMessage.style.display = 'block';
+                    contactForm.reset();
+                    contactForm.classList.remove('was-validated');
+
+                    // Scroll to success message
+                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                } catch (error) {
+                    // Error
+                    errorMessage.style.display = 'block';
+                    console.error('Email sending failed:', error);
+                } finally {
+                    // Reset button state
+                    submitBtn.disabled = false;
+                    submitText.textContent = 'Send Message';
+                    loadingSpinner.style.display = 'none';
+                }
+            });
+
+            // Pre-fill service from URL parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const serviceParam = urlParams.get('service');
+            if (serviceParam) {
+                const serviceSelect = document.getElementById('service');
+                const option = Array.from(serviceSelect.options).find(opt => opt.value === serviceParam);
+                if (option) {
+                    option.selected = true;
+
+                    // Set subject based on service
+                    const subjectField = document.getElementById('subject');
+                    if (!subjectField.value) {
+                        subjectField.value = `Inquiry about ${option.text} services`;
+                    }
+                }
+            }
+
+            // Auto-resize textarea
+            const messageTextarea = document.getElementById('message');
+            messageTextarea.addEventListener('input', function () {
+                this.style.height = 'auto';
+                this.style.height = (this.scrollHeight) + 'px';
+            });
+        });
+
+                                                                // Handle WhatsApp clicks for analytics
+                                                                document.querySelectorAll('a[href*="whatsapp"]').forEach(link => {
+                                                                    link.addEventListener('click', function () {
+                                                                        // You can add analytics here
+                                                                        console.log('WhatsApp link clicked');
+                                                                    });
+                                                                });
+                                                            </script>
 </body>
 </html>
